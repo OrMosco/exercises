@@ -1,3 +1,8 @@
+const prompt = require('prompt-sync')()
+
+
+
+
 class AutoCompleteTrie {
   constructor(value) {
     this.value = value
@@ -60,14 +65,66 @@ class AutoCompleteTrie {
 }
 
 }
-const root = new AutoCompleteTrie(null)
-root.addWord("cat")
-root.addWord("car")
-root.addWord("card")
-root.addWord("dog")
-root.addWord('cowboy')
 
-console.log(root.predictWords("c")) // ➜ ["cat", "car", "card"]
-console.log(root.predictWords("car")) // ➜ ["car", "card"]
-console.log(root.predictWords("d")) // ➜ ["dog"]
-console.log(root.predictWords("z")) // ➜ []
+console.log("=== AutoComplete Trie Console ===")
+console.log("Type 'help' for commands")
+
+const trie = new AutoCompleteTrie(null)
+
+while (true) {
+  const input = prompt('> ').trim()
+
+  if (input === 'exit') {
+    console.log("Goodbye!")
+    break
+  }
+  if (input.startsWith('add ')) {
+    const word = input.slice(4).trim()
+    if (word) {
+      trie.addWord(word.toLowerCase())  // שים לב שאפשר גם להוריד ל-lowercase
+      console.log(`✓ Added '${word}' to dictionary`)
+    } else {
+      console.log("✗ Please provide a word to add")
+    }
+    continue
+  }
+  if (input.startsWith('find ')) {
+    const word = input.slice(5).trim()
+    if (word) {
+      const found = trie.findWord(word.toLowerCase())
+      if (found) {
+        console.log(`✓ '${word}' exists in dictionary`)
+      } else {
+        console.log(`✗ '${word}' not found in dictionary`)
+      }
+    } else {
+      console.log("✗ Please provide a word to find")
+    }
+    continue
+  }
+  if (input.startsWith('complete ')) {
+    const prefix = input.slice(9).trim()
+    if (prefix) {
+      const results = trie.predictWords(prefix.toLowerCase())
+      if (results.length > 0) {
+        console.log(`Suggestions for '${prefix}': ${results.join(', ')}`)
+      } else {
+        console.log(`✗ No suggestions found for '${prefix}'`)
+      }
+    } else {
+      console.log("✗ Please provide a prefix")
+    }
+    continue
+  }
+  if (input === 'help') {
+    console.log("Commands:")
+    console.log("  add <word>        - Add word to dictionary")
+    console.log("  find <word>       - Check if word exists")
+    console.log("  complete <prefix> - Get completions")
+    console.log("  help              - Show this message")
+    console.log("  exit              - Quit program")
+    continue
+  }
+
+  // ניתוח פקודות נכניס כאן בהמשך
+}
