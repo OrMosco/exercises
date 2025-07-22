@@ -10,7 +10,7 @@ const quiz = [
 let score = 0;
 
 for (let i = 0; i < quiz.length; i++) {
-  const userAnswer = prompt("Question " + (i + 1) + ": " + quiz[i].question + " ");
+  const userAnswer = prompt(quiz[i].question);
 
   // בדיקה אם התשובה נכונה (לא משנה אותיות גדולות/קטנות)
   if (userAnswer.trim().toLowerCase() === quiz[i].answer.toLowerCase()) {
