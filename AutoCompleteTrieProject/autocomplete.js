@@ -48,16 +48,26 @@ class AutoCompleteTrie {
     this._allWordsHelper(prefix + char, child, allWords)
   }
 }
+    predictWords(prefix) {
+    const node = this._getRemainingTree(prefix, this)
+    if (!node) {
+        return []
+    }
+
+    const allWords = []
+    this._allWordsHelper(prefix, node, allWords)
+    return allWords
+}
 
 }
 const root = new AutoCompleteTrie(null)
 root.addWord("cat")
 root.addWord("car")
 root.addWord("card")
+root.addWord("dog")
+root.addWord('cowboy')
 
-const node = root._getRemainingTree("ca", root) // מגיע לצומת של 'a'
-const allWords = []
-root._allWordsHelper("ca", node, allWords) // אוסף את ההשלמות
-
-console.log(allWords) // אמור להדפיס: ["cat", "car", "card"]
-
+console.log(root.predictWords("c")) // ➜ ["cat", "car", "card"]
+console.log(root.predictWords("car")) // ➜ ["car", "card"]
+console.log(root.predictWords("d")) // ➜ ["dog"]
+console.log(root.predictWords("z")) // ➜ []
