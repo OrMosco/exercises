@@ -1,0 +1,10 @@
+#box {
+  background-color: #1abc9c;
+  line-height: 20px;
+  text-align: center;
+  width: 150px;
+  padding: 20px;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  transition: background-color 0.3s ease;
+}

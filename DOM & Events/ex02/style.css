@@ -1,0 +1,18 @@
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 600px;
+  margin: 20px auto;
+  gap: 10px;
+  background-color: rgb(209, 186, 186);
+  border: 1px solid #000;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: gray;
+  border: 1px solid #386911;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease;
+}
