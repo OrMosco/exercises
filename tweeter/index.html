@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tweeter Test</title>
+</head>
+<body>
+  <h1>Tweeter Logic Test</h1>
+  <p>Open the browser console to see test results.</p>
+
+  <script src="model.js"></script>
+  <script>
+    // Run these once the page loads
+    const tweeter = Tweeter();
+
+    console.log("Initial posts:");
+    console.log(tweeter.getPosts());
+
+    console.log("Adding new post:");
+    tweeter.addPost("This is my own post!");
+    console.log(tweeter.getPosts());
+
+    console.log("Removing post p1:");
+    tweeter.removePost("p1");
+    console.log(tweeter.getPosts());
+
+    console.log("Adding comments to p3 and p2:");
+    tweeter.addComment("p3", "Damn straight it is!");
+    tweeter.addComment("p2", "Second the best!");
+    console.log(tweeter.getPosts());
+
+    console.log("Removing comment c6 from post p2:");
+    tweeter.removeComment("p2", "c6");
+    console.log(tweeter.getPosts());
+  </script>
+</body>
+</html>
