@@ -1,56 +1,53 @@
-const Tweeter = function () {
-  const _posts = [
-    {
-      text: "First post!",
-      id: "p1",
-      comments: [
-        { id: "c1", text: "First comment on first post!" },
-        { id: "c2", text: "Second comment on first post!!" },
-        { id: "c3", text: "Third comment on first post!!!" }
-      ]
-    },
-    {
-      text: "Aw man, I wanted to be first",
-      id: "p2",
-      comments: [
-        { id: "c4", text: "Don't worry second poster, you'll be first one day." },
-        { id: "c5", text: "Yeah, believe in yourself!" },
-        { id: "c6", text: "Haha second place what a joke." }
-      ]
+const tweeter = Tweeter();
+const renderer = Renderer();
+
+
+renderer.renderPosts(tweeter.getPosts());
+
+
+document.getElementById("twit-btn").addEventListener("click", function () {
+  const input = document.getElementById("input");
+  const text = input.value.trim();
+
+  if (text !== "") {
+    tweeter.addPost(text);
+    input.value = ""; 
+    renderer.renderPosts(tweeter.getPosts());
+  }
+});
+
+
+document.getElementById("posts").addEventListener("click", function (event) {
+  const target = event.target;
+
+
+  if (target.classList.contains("delete")) {
+    const postId = target.dataset.id;
+    tweeter.removePost(postId);
+    renderer.renderPosts(tweeter.getPosts());
+  }
+
+
+  if (target.classList.contains("delete-comment")) {
+    const commentId = target.dataset.id;
+    const postDiv = target.closest(".post");
+    const postId = postDiv.dataset.id;
+
+    tweeter.removeComment(postId, commentId);
+    renderer.renderPosts(tweeter.getPosts());
+  }
+
+
+  if (target.classList.contains("comment-button")) {
+    const postDiv = target.closest(".post");
+    const postId = postDiv.dataset.id;
+    const input = postDiv.querySelector(".comment-input");
+    const text = input.value.trim();
+
+    if (text !== "") {
+      tweeter.addComment(postId, text);
+      input.value = "";
+      renderer.renderPosts(tweeter.getPosts());
     }
-  ];
-
-  let _postIdCounter = 3;
-  let _commentIdCounter = 7;
-
-  const getPosts = () => _posts;
-
-  const addPost = (text) => {
-    const newPost = {
-      text,
-      id: `p${_postIdCounter++}`,
-      comments: []
-    };
-    _posts.push(newPost);
-  };
-
-  const removePost = (postID) => {
-    const index = _posts.findIndex(p => p.id === postID);
-    if (index !== -1) _posts.splice(index, 1);
-  };
-
-  const addComment = (postID, text) => {
-    const post = _posts.find(p => p.id === postID);
-    if (post) post.comments.push({ id: `c${_commentIdCounter++}`, text });
-  };
-
-  const removeComment = (postID, commentID) => {
-    const post = _posts.find(p => p.id === postID);
-    if (post) {
-      const commentIndex = post.comments.findIndex(c => c.id === commentID);
-      if (commentIndex !== -1) post.comments.splice(commentIndex, 1);
-    }
-  };
-
-  return { getPosts, addPost, removePost, addComment, removeComment };
-};
+  }
+});

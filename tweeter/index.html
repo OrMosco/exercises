@@ -3,14 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>Tweeter Test</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>Tweeter Logic Test</h1>
   <p>Open the browser console to see test results.</p>
 
+  <input type="text" id="input" placeholder="What's on your mind?" />
+  <button id="twit-btn">Twit</button>
+
+  <div id="posts"></div>
+
+ 
   <script src="model.js"></script>
+  <script src="render.js"></script>
+  <script src="main.js"></script>
+
+
   <script>
-    // Run these once the page loads
     const tweeter = Tweeter();
 
     console.log("Initial posts:");
