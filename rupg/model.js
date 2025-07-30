@@ -36,3 +36,31 @@ export async function getPokemon(){
       image: data.sprites.front_default
   };
 }
+
+export async function getAbout() {
+  const res = await fetch("https://baconipsum.com/api/?type=meat-and-filler");
+  const data = await res.json();
+
+  return data[0]; 
+}
+
+export async function getFriends() {
+  const res = await fetch("https://randomuser.me/api/?results=6");
+  const data = await res.json();
+
+  return data.results.map(user => `${user.name.first} ${user.name.last}`);
+}
+
+export async function getFriends() {
+  const res = await fetch("https://randomuser.me/api/?results=6");
+  const data = await res.json();
+
+  const friends = [];
+
+  for (let user of data.results) {
+    const fullName = user.name.first + " " + user.name.last;
+    friends.push(fullName);
+  }
+
+  return friends;
+}
