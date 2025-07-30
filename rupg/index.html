@@ -5,35 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <script src="app.js" defer></script>
 </head> 
 <body>
 
-    <div id=""main-user">
-        //מידע של תמונה שם עיר ומדינה 
+    <div id="mainUser">
+        <!-- תמונה, שם, עיר ומדינה -->
+        <img id="user-picture" src="" alt="User Picture">
+        <h2 id="user-name"></h2>
+        <h3 id="user-location"></h3>
     </div>
 
     <div id="quote">
-        //ציטוט 
+        <!-- ציטוט -->
+        <blockquote id="kanye-quote"></blockquote>
     </div>
 
-    <div id="polkemon">
-        //תמונה של פוקימון
-        //שם של פוקימון
+    <div id="pokemon">
+        <!-- פוקימון -->
+        <img id="pokemon-image" src="" alt="Pokemon">
+        <h3 id="pokemon-name"></h3>
     </div>
 
     <div id="about">
-        //text
+        <!-- טקסט על המשתמש -->
+        <p id="about-text"></p>
     </div>
     
     <div id="friends">
-        // חברים 6
+        <!-- חברים -->
+        <ul id="friends-list"></ul>
     </div>
 
-    <div id=""controls">
-        //כפתורים
-        //generate
-        //save/load/dropdown
+    <div id="controls">
+        <!-- כפתורים -->
+        <button id="generate-btn">Generate User</button>
+        <button id="save-btn">Save User</button>
+        <button id="load-btn">Load User</button>
+        <select id="user-selector"></select>
     </div>
+
 </body>
 </html>
