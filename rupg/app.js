@@ -23,5 +23,13 @@ async function getUserPage() {
 
 
 async function getMainUser() {
-    const response = await fetch('api/user/main');
+    const response = await fetch('api');
     const data = await response.json();
+    const user = data.results[0];
+    return {
+        FirstName: user.name.first,
+
+    };
+}
+
+    getMainUser().then(user =>console.log(user));
