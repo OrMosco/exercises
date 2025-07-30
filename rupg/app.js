@@ -1,5 +1,5 @@
 
-import { getMainUser,getQuote } from "./model.js";
+import { getMainUser,getQuote,getPokemon,getAbout,getFriends,UserPage } from "./model.js";
 
 async function getUserPage() {
     const mainUser = await getMainUser();
@@ -12,7 +12,7 @@ async function getUserPage() {
 }
 
 
-getMainUser().then(user=> console.log("check",user));
-getQuote().then(quote=> console.log("ez says:",quote))
-
+getQuote().then(quote => {
+  document.getElementById("kanye-quote").textContent = quote;
+});
 
