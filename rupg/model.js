@@ -19,10 +19,10 @@ export async function getMainUser() {
     const user = data.results[0];
     return {
         FirstName: user.name.first,
-        lastName: user.name,last,
+        lastName: user.name.last,
         City: user.location.city,
         State: user.location.state,
-        Pictue: user.pictue.large
+        Pictue: user.picture.large
     };
 }
 
@@ -32,3 +32,4 @@ export async function getQuote() {
     const data = await response.json();
     return data.quote;
 }
+

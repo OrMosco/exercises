@@ -1,15 +1,5 @@
-// All getX() functions fetch and return specific data from APIs
 
-
-class UserPage {
-    constructor(mainUser, quote, pokemon,about, friends) {
-        this.mainUser = mainUser;
-        this.quote = quote;
-        this.pokemon = pokemon;
-        this.about = about;
-        this.friends = friends;
-    }
-}
+import { getMainUser,getQuote } from "./model.js";
 
 async function getUserPage() {
     const mainUser = await getMainUser();
@@ -22,14 +12,7 @@ async function getUserPage() {
 }
 
 
-async function getMainUser() {
-    const response = await fetch('api');
-    const data = await response.json();
-    const user = data.results[0];
-    return {
-        FirstName: user.name.first,
+getMainUser().then(user=> console.log("check",user));
+getQuote().then(quote=> console.log("ez says:",quote))
 
-    };
-}
 
-    getMainUser().then(user =>console.log(user));
