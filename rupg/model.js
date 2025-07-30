@@ -47,12 +47,6 @@ export async function getAbout() {
   return data[0]; 
 }
 
-export async function getFriends() {
-  const res = await fetch("https://randomuser.me/api/?results=6");
-  const data = await res.json();
-
-  return data.results.map(user => `${user.name.first} ${user.name.last}`);
-}
 
 export async function getFriends() {
   const res = await fetch("https://randomuser.me/api/?results=6");
