@@ -28,14 +28,17 @@ export async function getQuote() {
 }
 
 
-export async function getPokemon(){
-      const response = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=1302');
-      const data = await response.json();
-      return {
-      name: data.name,
-      image: data.sprites.front_default
+export async function getPokemon() {
+  const randomId = Math.floor(Math.random() * 1025) + 1;
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`);
+  const data = await response.json();
+  
+  return {
+    name: data.name,
+    image: data.sprites.front_default
   };
 }
+
 
 export async function getAbout() {
   const res = await fetch("https://baconipsum.com/api/?type=meat-and-filler");
