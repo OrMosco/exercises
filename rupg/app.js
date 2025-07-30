@@ -12,7 +12,4 @@ async function getUserPage() {
 }
 
 
-getQuote().then(quote => {
-  document.getElementById("kanye-quote").textContent = quote;
-});
 
