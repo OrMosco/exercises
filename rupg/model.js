@@ -26,3 +26,13 @@ export async function getQuote() {
   const data = await response.json();
   return data.quote;
 }
+
+
+export async function getPokemon(){
+      const response = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=1302');
+      const data = await response.json();
+      return {
+      name: data.name,
+      image: data.sprites.front_default
+  };
+}
