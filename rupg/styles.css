@@ -1,0 +1,22 @@
+body {
+    background-color: rgb(245, 245, 245);
+    margin: 0;
+    padding: 20px;
+}
+
+#mainUser {
+    background-color: blueviolet;
+}
+
+
+img {
+    width: 150px;
+    border-radius: 50%;
+}
+
+button {
+    padding: 10px 15px;
+    margin: : 50px;
+    font-size:16px;
+
+}
